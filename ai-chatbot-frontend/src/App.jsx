@@ -215,7 +215,7 @@ useEffect(() => {
       );
 
       const response = await fetch(
-        "http://127.0.0.1:5000/pdf-chat",
+        "https://meena-ai-chatbot.onrender.com/pdf-chat",
         {
           method: "POST",
           body: formData,
@@ -227,7 +227,7 @@ useEffect(() => {
     } else {
 
       const response = await fetch(
-        "http://127.0.0.1:5000/chat",
+        "https://meena-ai-chatbot.onrender.com/chat",
         {
           method: "POST",
 
@@ -285,7 +285,7 @@ useEffect(() => {
   setPdfAnswer("");
 
   try {
-    const response = await fetch("http://127.0.0.1:5000/pdf-chat", {
+    const response = await fetch("https://meena-ai-chatbot.onrender.com/pdf-chat", {
       method: "POST",
       body: formData,
     });
@@ -305,7 +305,7 @@ const loginUser = async () => {
   try {
 
     const response = await fetch(
-      "http://127.0.0.1:5000/login",
+      "https://meena-ai-chatbot.onrender.com/login",
       {
         method: "POST",
 
@@ -406,7 +406,7 @@ if (!isLoggedIn) {
 const saveChatToDB = async () => {
   const savedEmail = localStorage.getItem("email");
 
-  const response = await fetch("http://127.0.0.1:5000/save-chat", {
+  const response = await fetch("https://meena-ai-chatbot.onrender.com/save-chat", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
