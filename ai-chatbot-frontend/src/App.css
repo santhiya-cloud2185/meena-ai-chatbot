@@ -1,0 +1,416 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #0f1117;
+  color: white;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  height: calc(100vh - 40px);
+  background: #171923;
+  border-radius: 22px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  margin: 0 0 20px;
+  font-size: 26px;
+}
+
+.sidebar button {
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: #7c3aed;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+
+.sidebar p {
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* CHAT CARD */
+.chat-card {
+  flex: 1;
+  height: calc(100vh - 40px);
+  background: #151821;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* HEADER */
+.header {
+  padding: 24px 30px;
+  border-bottom: 1px solid #252a36;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.header p {
+  margin: 8px 0 0;
+  color: #94a3b8;
+}
+
+.mode-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  background: #2a2f3d;
+}
+
+/* CHAT WINDOW */
+.chat-window {
+  flex: 1;
+  padding: 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* MESSAGE ROW */
+.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.message-row.user {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #2a2f3d;
+  flex-shrink: 0;
+}
+
+/* MESSAGE BUBBLES */
+.message {
+  max-width: 70%;
+  padding: 14px 18px;
+  border-radius: 18px;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.message p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.message.ai {
+  background: #242938;
+  color: #e5e7eb;
+  border-bottom-left-radius: 5px;
+}
+
+.message.user {
+  background: #7c3aed;
+  color: white;
+  border-bottom-right-radius: 5px;
+}
+
+/* INPUT */
+.input-area {
+  display: flex;
+  gap: 12px;
+  padding: 18px;
+  border-top: 1px solid #252a36;
+  background: #11141c;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 15px 18px;
+  border-radius: 14px;
+  border: 1px solid #2a2f3d;
+  background: #1c2130;
+  color: white;
+  outline: none;
+  font-size: 16px;
+}
+
+.input-area input::placeholder {
+  color: #94a3b8;
+}
+
+.input-area button {
+  padding: 15px 24px;
+  border: none;
+  border-radius: 14px;
+  background: #22c55e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.input-area button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* TYPING DOTS */
+.typing {
+  display: flex;
+  gap: 6px;
+  padding: 16px;
+}
+
+.typing span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  animation: bounce 0.9s infinite ease-in-out;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* LIGHT MODE */
+.light {
+  background: #eef2ff;
+  color: #111827;
+}
+
+.light .sidebar,
+.light .chat-card {
+  background: white;
+}
+
+.light .header,
+.light .input-area {
+  border-color: #e5e7eb;
+}
+
+.light .message.ai {
+  background: #f1f5f9;
+  color: #111827;
+}
+
+.light .input-area {
+  background: #f8fafc;
+}
+
+.light .input-area input {
+  background: white;
+  color: #111827;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+  .app {
+    padding: 10px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .chat-card {
+    height: calc(100vh - 20px);
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .message {
+    max-width: 85%;
+  }
+}
+
+.light .sidebar h2,
+.light .sidebar p,
+.light .header h1,
+.light .header p {
+  color: #111827;
+}
+
+.light .avatar {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.light .sidebar button {
+  color: white;
+}
+
+.message pre {
+  background: #0f172a;
+  padding: 14px;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.message code {
+  color: #22c55e;
+  font-family: monospace;
+}
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.chat-item {
+  padding: 12px;
+  border-radius: 12px;
+  background: #222636;
+  color: #e5e7eb;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.chat-item:hover {
+  background: #2f3548;
+}
+
+.chat-item.active {
+  background: #7c3aed;
+  color: white;
+}
+
+.light .chat-item {
+  background: #f1f5f9;
+  color: #111827;
+}
+
+.light .chat-item:hover {
+  background: #e2e8f0;
+}
+
+.light .chat-item.active {
+  background: #7c3aed;
+  color: white;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.mic-btn {
+  background: #ef4444 !important;
+}
+
+
+
+.mic-btn.listening {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.pdf-box {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #2a2f3d;
+}
+
+.pdf-box h3 {
+  margin: 0 0 12px;
+}
+
+.pdf-box input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.pdf-box button {
+  width: 100%;
+}
+
+.pdf-answer {
+  margin-top: 12px;
+  max-height: 220px;
+  overflow-y: auto;
+  font-size: 13px;
+  background: #222636;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.light .pdf-answer {
+  background: #f1f5f9;
+  color: #111827;
+}
+
+.upload-btn {
+  padding: 15px 18px;
+  border-radius: 14px;
+  background: #334155;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.light .upload-btn {
+  background: #e2e8f0;
+  color: #111827;
+}
+
+.pdf-status {
+  padding: 8px 18px;
+  font-size: 14px;
+  color: #94a3b8;
+}
